@@ -1,0 +1,17 @@
+
+
+
+
+
+
+
+
+.currWeather > div {
+    display: flex;
+    justify-content: start;
+    gap: 5px;
+}
+
+.currWeather > div > img {
+    align-self: center;
+}

@@ -1,4 +1,4 @@
-import {getLatLon, getLocation} from './location'
+import { getLocation } from './location'
 
 const inputLocation = document.getElementById('location');
 const searchBtn = document.getElementById('search');
