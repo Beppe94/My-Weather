@@ -1,5 +1,5 @@
 export default async function getWeather(latitude, longitude) {
-    const promise = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}0&longitude=${longitude}&hourly=temperature_2m,relativehumidity_2m,apparent_temperature,precipitation_probability,precipitation,rain,showers,snowfall,snow_depth,visibility,windspeed_10m,windspeed_80m,winddirection_10m&current_weather=true&start_date=2023-04-16&end_date=2023-04-22`);
+    const promise = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}0&longitude=${longitude}&hourly=temperature_2m,relativehumidity_2m,apparent_temperature,precipitation_probability,precipitation,rain,snowfall,windspeed_10m&current_weather=true`);
     const response = await promise.json();
 
     console.log(response);
@@ -68,6 +68,11 @@ const weatherCodesDescription = {
     'thunderstorm' : [95, '*'],
     'hail' : [96, 99, '*']
 }
+const cloudy = [1,2,3];
+const foggy = [45, 48];
+const rain = [51,53,55,56,57,61,63,65,66,67,80,81,82];
+const snow = [71,73,75,77,85, 86];
+const thunderstorm = [95,96, 99,'*'];
 
 async function setWeatherInterpretation(data) {
     const currTemp = document.getElementById('curr-temp');
@@ -77,11 +82,19 @@ async function setWeatherInterpretation(data) {
     let isDay = await data.current_weather.is_day;
 
     if(weatherCode == 0 && isDay == 0) {
-        weatherPng.src = 'icons/night.png'
-    } else if(weatherCode == 1 || weatherCode == 2 || weatherCode == 3 && isDay == 1) {
-        weatherPng.src = 'icons/cloudyDay.png'
-    } else if(weatherCode == 1 && isDay == 0) {
-        weatherPng.src = 'icons/cloudyNight.png'
+        weatherPng.src = 'icons/night.png';
+    } else if(cloudy.includes(weatherCode) && isDay == 1) {
+        weatherPng.src = 'icons/cloudyDay.png';
+    } else if(cloudy.includes(weatherCode) && isDay == 0) {
+        weatherPng.src = 'icons/cloudyNight.png';
+    } else if(foggy.includes(weatherCode)) {
+        weatherPng.src = 'icons/foggy.png';
+    } else if(rain.includes(weatherCode)) {
+        weatherPng.src = 'icons/rainy.png';
+    } else if(snow.includes(weatherCode)) {
+        weatherPng.src = 'icons/snowy.png';
+    } else if(thunderstorm.includes(weatherCode)) {
+        weatherPng.src = 'icons/thunderstorm.png'
     }
     
     currTemp.appendChild(weatherPng);

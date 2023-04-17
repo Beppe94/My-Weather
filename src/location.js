@@ -27,5 +27,5 @@ async function setLocation(data) {
     }
     
     locationName.textContent = data.results[0].name;
-    locationCountry.textContent = admin1 + ' ' + data.results[0].country;
+    locationCountry.textContent = `${admin1} ${data.results[0].country}`;
 }
