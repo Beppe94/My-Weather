@@ -1,18 +1,19 @@
 export default async function getWeather(latitude, longitude) {
-    const promise = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}0&longitude=${longitude}&hourly=temperature_2m,relativehumidity_2m,apparent_temperature,precipitation_probability,precipitation,rain,snowfall,windspeed_10m&current_weather=true`);
+    const promise = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,apparent_temperature,relativehumidity_2m&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,windspeed_10m_max&current_weather=true&timezone=auto`)
     const response = await promise.json();
 
     console.log(response);
-    getCurrentTime(response);
+    getCurrentDate(response);
     getCurrentWeather(response);
     setWeatherInterpretation(response);
     
+    getTime(response)
     return response;
 }
 
 const currWeather = document.getElementById('curr-weather');
 
-async function getCurrentTime(data) {
+async function getCurrentDate(data) {
     const currDateDiv = document.getElementById('curr-date')
     currDateDiv.textContent = ''
     
@@ -53,21 +54,6 @@ function formatTime(time) {
     return `${day[0]}${day[1]}/${month}/${year}`
 }
 
-const weatherCodesDescription = {
-    'clear sky' : [0],
-    'cloudy' : [1,2,3],
-    'fog' : [45,48],
-    'dizzle' : [51,53,55],
-    'freezing dizzle' : [56,57],
-    'rain' : [61,63,65],
-    'freezing rain' : [66, 67],
-    'snow' : [71,73,75],
-    'snow grains' : [77],
-    'rain shower' : [80, 81, 82],
-    'snow shower' : [85, 86],
-    'thunderstorm' : [95, '*'],
-    'hail' : [96, 99, '*']
-}
 const cloudy = [1,2,3];
 const foggy = [45, 48];
 const rain = [51,53,55,56,57,61,63,65,66,67,80,81,82];
@@ -99,6 +85,13 @@ async function setWeatherInterpretation(data) {
     
     currTemp.appendChild(weatherPng);
     currWeather.appendChild(currTemp);
+}
 
-    console.log(weatherCode, isDay);
+
+
+async function getTime(data) {
+    let currDate = data.current_weather.time;
+    let currTime = currDate.split('T')
+
+    console.log(currTime[1]);
 }

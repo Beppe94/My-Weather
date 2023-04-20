@@ -8,12 +8,15 @@ inputLocation.addEventListener('keypress', (e) => {
         const query = inputLocation.value;
 
         getLocation(query);
+        inputLocation.value = '';
     }
+
 })
 
 searchBtn.addEventListener('click', () => {
     const query = inputLocation.value;
 
     getLocation(query);
+    inputLocation.value = '';
 })
 
