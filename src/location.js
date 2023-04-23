@@ -18,6 +18,7 @@ async function getLatLon(data) {
 
 async function setLocation(data) {
     const locationName = document.getElementById('location-name');
+    const locationRegion = document.getElementById('location-region');
     const locationCountry = document.getElementById('location-country');
 
     let admin1 = data.results[0].admin1;
@@ -27,5 +28,8 @@ async function setLocation(data) {
     }
     
     locationName.textContent = data.results[0].name;
-    locationCountry.textContent = `${admin1} ${data.results[0].country}`;
+    locationRegion.textContent = admin1
+    locationCountry.textContent = data.results[0].country;
 }
+
+getLocation('bergamo');

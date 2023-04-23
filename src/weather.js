@@ -3,12 +3,11 @@ export default async function getWeather(latitude, longitude) {
     const response = await promise.json();
 
     console.log(response);
-    getCurrentDate(response);
-    getCurrentWeather(response);
-    setWeatherInterpretation(response);
     
+    getCurrentDate(response);
+    setWeatherInterpretation(response);
+    getCurrentWeather(response);
     getTime(response)
-    return response;
 }
 
 const currWeather = document.getElementById('curr-weather');
@@ -18,7 +17,7 @@ async function getCurrentDate(data) {
     currDateDiv.textContent = ''
     
     const datePng = document.createElement('img');
-    const currDate = document.createElement('h2');
+    const currDate = document.createElement('h3');
     
     datePng.src = 'icons/calendar.png'
     currDate.textContent = formatTime(data.current_weather.time);
@@ -33,14 +32,10 @@ async function getCurrentWeather(data) {
     const currWeatherDiv = document.getElementById('curr-temp');
     currWeatherDiv.textContent = ''
 
-    const currTemp = document.createElement('h2');
-    const tempPng = document.createElement('img');
+    const currTemp = document.createElement('h1');
     
-    tempPng.src = 'icons/thermostat.png'
-    currTemp.textContent = data.current_weather.temperature + ' °C';
+    currTemp.textContent = await data.current_weather.temperature + ' °C';
     
-    
-    currWeatherDiv.appendChild(tempPng);
     currWeatherDiv.appendChild(currTemp);
     
     currWeather.appendChild(currWeatherDiv);
@@ -63,35 +58,50 @@ const thunderstorm = [95,96, 99,'*'];
 async function setWeatherInterpretation(data) {
     const currTemp = document.getElementById('curr-temp');
     const weatherPng = document.createElement('img');
+    const weatherDescription = document.createElement('h2');
     
     let weatherCode = await data.current_weather.weathercode;
     let isDay = await data.current_weather.is_day;
 
-    if(weatherCode == 0 && isDay == 0) {
-        weatherPng.src = 'icons/night.png';
-    } else if(cloudy.includes(weatherCode) && isDay == 1) {
-        weatherPng.src = 'icons/cloudyDay.png';
-    } else if(cloudy.includes(weatherCode) && isDay == 0) {
-        weatherPng.src = 'icons/cloudyNight.png';
+    if(weatherCode === 0 && isDay === 1){
+        weatherDescription.textContent = 'Clear Sky';
+        weatherPng.src = 'icons/sunny.svg';
+    }else if(weatherCode === 0 && isDay === 0) {
+        weatherDescription.textContent = 'Clear Sky';
+        weatherPng.src = 'icons/night.svg';
+    } else if(cloudy.includes(weatherCode) && isDay === 1) {
+        weatherDescription.textContent = 'Scattered Clouds'
+        weatherPng.src = 'icons/cloudyDay.svg';
+    } else if(cloudy.includes(weatherCode) && isDay === 0) {
+        weatherDescription.textContent = 'Scattered Clouds';
+        weatherPng.src = 'icons/cloudyNight.svg';
     } else if(foggy.includes(weatherCode)) {
-        weatherPng.src = 'icons/foggy.png';
+        weatherDescription.textContent = 'Foggy';
+        weatherPng.src = 'icons/foggy.svg';
     } else if(rain.includes(weatherCode)) {
-        weatherPng.src = 'icons/rainy.png';
+        weatherDescription.textContent = 'Rainy';
+        weatherPng.src = 'icons/rainy.svg';
     } else if(snow.includes(weatherCode)) {
-        weatherPng.src = 'icons/snowy.png';
+        weatherDescription.textContent = 'Snowy';
+        weatherPng.src = 'icons/snowy.svg';
     } else if(thunderstorm.includes(weatherCode)) {
-        weatherPng.src = 'icons/thunderstorm.png'
+        weatherDescription.textContent = 'Thunderstorm';
+        weatherPng.src = 'icons/thunderstorm.svg'
     }
     
+    currTemp.appendChild(weatherDescription);
     currTemp.appendChild(weatherPng);
     currWeather.appendChild(currTemp);
 }
 
-
-
 async function getTime(data) {
-    let currDate = data.current_weather.time;
+    let currDate = await data.current_weather.time;
     let currTime = currDate.split('T')
 
     console.log(currTime[1]);
 }
+
+
+getWeather(45.7, 9.66)
+
+
