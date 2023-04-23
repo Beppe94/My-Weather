@@ -9,32 +9,41 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div>
+    <div class="search">
+        <button type="submit" id="search"><img src="./icons/search.png"></img></button>
         <input type="search" id="location" placeholder="London, Paris, New York">
-        <h4>Search by <span>City</span></h4>
-        <button type="submit" id="search">Search</button>
     </div>
-    <div>
-        <h1 id="location-name"></h1>
-        <h2 id="location-country"></h2>
+    <div class="text">
+        <h3>Search by <span>City</span></h3>
+        <h4 id="err-text"></h4>
     </div>
-    <div class="currWeather" id="curr-weather">
-        <div id="curr-date">
-
+    <div class="main-weather">
+        <div class="location-weather">
+            <div class="curr-locations">
+                <h2 id="location-name"></h2>
+                <h2 id="location-region"></h2>
+                <h2 id="location-country"></h2>
+            </div>
+            <div class="date-temp" id="curr-weather">
+                <div class="curr-date" id="curr-date">
+                    
+                </div>
+                <div class="curr-temp" id="curr-temp">
+                    
+                </div>
+                <div id="myDiv"></div>
+            </div>
         </div>
-        <div id="curr-temp">
-
-        </div>
-    </div>
-    <div>
         <div>
-            <h4>Feels Like</h4>
-        </div>
-        <div>
-            <h4>Wind Speed</h4>
-        </div>
-        <div>
-            <h4>Chance of Rain</h4>
+            <div>
+                <h4>Feels Like</h4>
+            </div>
+            <div>
+                <h4>Wind Speed</h4>
+            </div>
+            <div>
+                <h4>Chance of Rain</h4>
+            </div>
         </div>
     </div>
 </body>
