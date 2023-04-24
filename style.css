@@ -54,6 +54,7 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    padding: 5px;
 }
 
 .curr-locations {
@@ -78,5 +79,52 @@
 .curr-temp {
     display: flex;
     flex-direction: column;
+    gap: 5px;
+}
+
+.more-info {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.more-info img {
+    scale: .7;
+}
+
+.feels-like {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.wind-speed {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.rain-prob {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.humidity {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.max-temp {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.min-temp {
+    display: flex;
+    align-items: center;
     gap: 5px;
 }
