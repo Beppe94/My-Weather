@@ -1,13 +1,19 @@
+import { getApparentWeather, getHumidity, getMaxTemp, getMinTemp, getPrecipitation, getTime, getWindSpeed } from "./utilities";
+
 export default async function getWeather(latitude, longitude) {
     const promise = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,apparent_temperature,relativehumidity_2m&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,windspeed_10m_max&current_weather=true&timezone=auto`)
     const response = await promise.json();
-
-    console.log(response);
     
+    console.log(response);
     getCurrentDate(response);
     setWeatherInterpretation(response);
     getCurrentWeather(response);
-    getTime(response)
+    getApparentWeather(getTime(response), response);
+    getWindSpeed(response);
+    getPrecipitation(response);
+    getHumidity(getTime(response), response);
+    getMaxTemp(response);
+    getMinTemp(response);
 }
 
 const currWeather = document.getElementById('curr-weather');
@@ -28,13 +34,13 @@ async function getCurrentDate(data) {
     currWeather.appendChild(currDateDiv)
 }
 
-async function getCurrentWeather(data) {
+function getCurrentWeather(data) {
     const currWeatherDiv = document.getElementById('curr-temp');
     currWeatherDiv.textContent = ''
 
     const currTemp = document.createElement('h1');
     
-    currTemp.textContent = await data.current_weather.temperature + ' °C';
+    currTemp.textContent = data.current_weather.temperature + ' °C';
     
     currWeatherDiv.appendChild(currTemp);
     
@@ -93,14 +99,6 @@ async function setWeatherInterpretation(data) {
     currTemp.appendChild(weatherPng);
     currWeather.appendChild(currTemp);
 }
-
-async function getTime(data) {
-    let currDate = await data.current_weather.time;
-    let currTime = currDate.split('T')
-
-    console.log(currTime[1]);
-}
-
 
 getWeather(45.7, 9.66)
 

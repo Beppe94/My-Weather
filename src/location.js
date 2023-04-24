@@ -1,11 +1,18 @@
 import getWeather from "./weather";
 
+const errText = document.getElementById('err-text');
+
 export async function getLocation(city) {
+
     const promise = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${city}&count=1&language=it&format=json`);
     const response = await promise.json();
     
-    setLocation(response)
-    getLatLon(response)
+    if(!response.results) {
+        errText.textContent = 'Location Not Found';
+    }
+
+    getLatLon(response);
+    setLocation(response);
 }
 
 async function getLatLon(data) {
@@ -32,4 +39,4 @@ async function setLocation(data) {
     locationCountry.textContent = data.results[0].country;
 }
 
-getLocation('bergamo');
+getLocation('Bergamo');

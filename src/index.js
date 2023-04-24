@@ -10,20 +10,23 @@ inputLocation.addEventListener('keypress', (e) => {
 
     if(e.key === 'Enter') {
         if(query === '') {
-            errText.textContent = 'Invalid input'
+            errText.textContent = 'Invalid input';
         } else {
             getLocation(query);
             inputLocation.value = '';
-            errText.textContent = ''
+            errText.textContent = '';
         }
-
     }
-
 })
 
 searchBtn.addEventListener('click', () => {
     const query = inputLocation.value;
 
-    getLocation(query);
-    inputLocation.value = '';
+    if(query === '') {
+        errText.textContent = 'Invalid Input';
+    } else {
+        getLocation(query);
+        inputLocation.value = '';
+        errText.textContent = '';
+    }
 })
