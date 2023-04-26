@@ -9,9 +9,17 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="search">
-        <button type="submit" id="search"><img src="./icons/search.png"></img></button>
-        <input type="search" id="location" placeholder="London, Paris, New York">
+    <div class="search-wrap">
+        <div class="search">
+            <button type="submit" id="search"><img src="./icons/search.png"></img></button>
+            <input type="search" id="location" placeholder="London, Paris, New York">
+        </div>
+        <div class="switch-wrap">
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"><span class="content"></span></span>
+            </label>
+        </div>
     </div>
     <div class="text">
         <h4 id="err-text"></h4>
@@ -58,7 +66,7 @@
             <div class="humidity">
                 <img src="icons/humidity.png" alt="humidity">
                 <div>
-                    <h5>humidity</h5>
+                    <h5>Humidity</h5>
                     <h3 id="humidity"></h3>
                 </div>
             </div>
