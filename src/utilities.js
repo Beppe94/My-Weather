@@ -11,7 +11,6 @@ function getTime(data) {
     } else {
         return timeTwoDigits;
     }
-    
 }
 
 function getApparentWeather(time, data) {

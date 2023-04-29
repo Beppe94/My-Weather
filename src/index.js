@@ -1,8 +1,10 @@
-import { getLocation } from './location'
+import { getLocation } from './location';
+import { imperial, metric } from './metric-imperial';
 
 const inputLocation = document.getElementById('location');
 const searchBtn = document.getElementById('search');
 const errText = document.getElementById('err-text');
+const switchBtn = document.getElementById('imperial');
 
 
 inputLocation.addEventListener('keypress', (e) => {
@@ -28,5 +30,15 @@ searchBtn.addEventListener('click', () => {
         getLocation(query);
         inputLocation.value = '';
         errText.textContent = '';
+    }
+})
+
+switchBtn.addEventListener('click', (e) => {
+    if(switchBtn.textContent === 'Imperial') {
+        switchBtn.textContent = 'Metric';
+        imperial()
+    } else {
+        switchBtn.textContent = 'Imperial';
+        metric()
     }
 })

@@ -13,6 +13,8 @@ export async function getLocation(city) {
 
     getLatLon(response);
     setLocation(response);
+
+    return response;
 }
 
 async function getLatLon(data) {
