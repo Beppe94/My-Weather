@@ -1,7 +1,8 @@
+import { getForecast } from "./forecast";
 import { getApparentWeather, getHumidity, getMaxTemp, getMinTemp, getPrecipitation, getTime, getWindSpeed } from "./utilities";
 
 export default async function getWeather(latitude, longitude) {
-    const promise = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,apparent_temperature,relativehumidity_2m&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,windspeed_10m_max&current_weather=true&timezone=auto`)
+    const promise = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=apparent_temperature,relativehumidity_2m&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_probability_max,windspeed_10m_max&current_weather=true&timezone=auto`)
     const response = await promise.json();
     
     getCurrentDate(response);
@@ -13,7 +14,8 @@ export default async function getWeather(latitude, longitude) {
     getHumidity(getTime(response), response);
     getMaxTemp(response);
     getMinTemp(response);
-
+    getForecast(response);
+    
     console.log(response);
     return response;
 }
@@ -48,7 +50,7 @@ function getCurrentWeather(data) {
     currWeather.appendChild(currWeatherDiv);
 }
 
-function formatTime(time) {
+export function formatTime(time) {
     const day = time.split('-')[2];
     const month = time.split('-')[1];
     const year = time.split('-')[0];
@@ -64,7 +66,7 @@ const thunderstorm = [95,96, 99,'*'];
 
 async function setWeatherInterpretation(data) {
     const currTemp = document.getElementById('curr-temp');
-    const weatherPng = document.createElement('img');
+    const weatherSvg = document.createElement('img');
     const weatherDescription = document.createElement('h2');
     
     let weatherCode = await data.current_weather.weathercode;
@@ -72,35 +74,34 @@ async function setWeatherInterpretation(data) {
 
     if(weatherCode === 0 && isDay === 1){
         weatherDescription.textContent = 'Clear Sky';
-        weatherPng.src = 'icons/sunny.svg';
+        weatherSvg.src = 'icons/sunny.svg';
     }else if(weatherCode === 0 && isDay === 0) {
         weatherDescription.textContent = 'Clear Sky';
-        weatherPng.src = 'icons/night.svg';
+        weatherSvg.src = 'icons/night.svg';
     } else if(cloudy.includes(weatherCode) && isDay === 1) {
         weatherDescription.textContent = 'Scattered Clouds'
-        weatherPng.src = 'icons/cloudyDay.svg';
+        weatherSvg.src = 'icons/cloudyDay.svg';
     } else if(cloudy.includes(weatherCode) && isDay === 0) {
         weatherDescription.textContent = 'Scattered Clouds';
-        weatherPng.src = 'icons/cloudyNight.svg';
+        weatherSvg.src = 'icons/cloudyNight.svg';
     } else if(foggy.includes(weatherCode)) {
         weatherDescription.textContent = 'Foggy';
-        weatherPng.src = 'icons/foggy.svg';
+        weatherSvg.src = 'icons/foggy.svg';
     } else if(rain.includes(weatherCode)) {
         weatherDescription.textContent = 'Rainy';
-        weatherPng.src = 'icons/rainy.svg';
+        weatherSvg.src = 'icons/rainy.svg';
     } else if(snow.includes(weatherCode)) {
         weatherDescription.textContent = 'Snowy';
-        weatherPng.src = 'icons/snowy.svg';
+        weatherSvg.src = 'icons/snowy.svg';
     } else if(thunderstorm.includes(weatherCode)) {
         weatherDescription.textContent = 'Thunderstorm';
-        weatherPng.src = 'icons/thunderstorm.svg'
+        weatherSvg.src = 'icons/thunderstorm.svg'
     }
     
     currTemp.appendChild(weatherDescription);
-    currTemp.appendChild(weatherPng);
+    currTemp.appendChild(weatherSvg);
     currWeather.appendChild(currTemp);
 }
 
-getWeather(45.7, 9.66)
 
 

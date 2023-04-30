@@ -87,6 +87,11 @@
     gap: 5px;
 }
 
+.curr-temp img {
+    max-width: 175px;
+    max-height: 175px;
+}
+
 .more-info {
     display: flex;
     justify-content: flex-start;
@@ -132,4 +137,30 @@
     display: flex;
     align-items: center;
     gap: 5px;
+}
+
+.wrap-forecast {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.cards {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+
+.card {
+    padding: 15px;
+    border-radius: 5px;
+    border: 3px solid black;
+    display: flex;
+    justify-self: center;
+    flex-direction: column;
+    gap: 10px;
 }
