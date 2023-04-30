@@ -17,6 +17,7 @@ inputLocation.addEventListener('keypress', (e) => {
             getLocation(query);
             inputLocation.value = '';
             errText.textContent = '';
+            switchBtn.textContent = 'Imperial';
         }
     }
 })
@@ -30,6 +31,7 @@ searchBtn.addEventListener('click', () => {
         getLocation(query);
         inputLocation.value = '';
         errText.textContent = '';
+        switchBtn.textContent = 'Imperial';
     }
 })
 
