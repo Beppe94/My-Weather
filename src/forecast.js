@@ -21,6 +21,9 @@ function setForecastDayOne(day,maxTempFore,minTempFore,weatherCodeFore) {
     const minTemp = document.createElement('h3');
     const weatherCodeImg = document.createElement('img');
     
+    maxTemp.className = 'forecast-max-temp';
+    minTemp.className = 'forecast-min-temp';
+    
     date.textContent = formatTime(day[1]);
     maxTemp.textContent = maxTempFore[1] + ' °C';
     minTemp.textContent = minTempFore[1] + ' °C';
@@ -38,6 +41,9 @@ function setForecastDayTwo(day,maxTempFore,minTempFore,weatherCodeFore) {
     const maxTemp = document.createElement('h2');
     const minTemp = document.createElement('h3');
     const weatherCodeImg = document.createElement('img');
+
+    maxTemp.className = 'forecast-max-temp';
+    minTemp.className = 'forecast-min-temp';
     
     date.textContent = formatTime(day[2]);
     maxTemp.textContent = maxTempFore[2] + ' °C';
@@ -56,6 +62,9 @@ function setForecastDayThree(day,maxTempFore,minTempFore,weatherCodeFore) {
     const maxTemp = document.createElement('h2');
     const minTemp = document.createElement('h3');
     const weatherCodeImg = document.createElement('img');
+
+    maxTemp.className = 'forecast-max-temp';
+    minTemp.className = 'forecast-min-temp';
     
     date.textContent = formatTime(day[3]);
     maxTemp.textContent = maxTempFore[3] + ' °C';
@@ -74,6 +83,9 @@ function setForecastDayFour(day,maxTempFore,minTempFore,weatherCodeFore) {
     const maxTemp = document.createElement('h2');
     const minTemp = document.createElement('h3');
     const weatherCodeImg = document.createElement('img');
+
+    maxTemp.className = 'forecast-max-temp';
+    minTemp.className = 'forecast-min-temp';
     
     date.textContent = formatTime(day[4]);
     maxTemp.textContent = maxTempFore[4] + ' °C';
@@ -92,6 +104,9 @@ function setForecastDayFive(day,maxTempFore,minTempFore,weatherCodeFore) {
     const maxTemp = document.createElement('h2');
     const minTemp = document.createElement('h3');
     const weatherCodeImg = document.createElement('img');
+
+    maxTemp.className = 'forecast-max-temp';
+    minTemp.className = 'forecast-min-temp';
     
     date.textContent = formatTime(day[5]);
     maxTemp.textContent = maxTempFore[5] + ' °C';
@@ -110,7 +125,10 @@ function setForecastDaySix(day,maxTempFore,minTempFore,weatherCodeFore) {
     const maxTemp = document.createElement('h2');
     const minTemp = document.createElement('h3');
     const weatherCodeImg = document.createElement('img');
-    
+
+    maxTemp.className = 'forecast-max-temp';
+    minTemp.className = 'forecast-min-temp';
+
     date.textContent = formatTime(day[6]);
     maxTemp.textContent = maxTempFore[6] + ' °C';
     minTemp.textContent = minTempFore[6] + ' °C';

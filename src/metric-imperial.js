@@ -29,7 +29,9 @@ async function imperial() {
     const windSpd = document.getElementById('wind-speed');
     const maxTemp = document.getElementById('max-temp');
     const minTemp = document.getElementById('min-temp');
-
+    const forecastMaxTemp = document.querySelectorAll('.forecast-max-temp');
+    const forecastMinTemp = document.querySelectorAll('.forecast-min-temp');
+    
     let fCurrTemp = currTemp.textContent.split(' °C')[0];
     let fFeelsLike = feelsLike.textContent.split(' °C')[0];
     let fWindSpd = windSpd.textContent.split(' Km/h')[0];
@@ -41,6 +43,16 @@ async function imperial() {
     windSpd.textContent = switchKm(fWindSpd) + ' Mph';
     maxTemp.textContent = switchTempF(fMaxTemp) + ' °F';
     minTemp.textContent = switchTempF(fMinTemp) + ' °F';
+
+    forecastMaxTemp.forEach(element =>{
+        let newTempF = element.textContent.split(' °C')[0];
+        element.textContent = switchTempF(newTempF) + ' °F';
+    });
+
+    forecastMinTemp.forEach(element => {
+        let newTempF = element.textContent.split(' °C')[0];
+        element.textContent = switchTempF(newTempF) + ' °F';
+    })
 }
 
 async function metric() {
@@ -49,12 +61,24 @@ async function metric() {
     const windSpd = document.getElementById('wind-speed');
     const maxTemp = document.getElementById('max-temp');
     const minTemp = document.getElementById('min-temp');
+    const forecastMaxTemp = document.querySelectorAll('.forecast-max-temp');
+    const forecastMinTemp = document.querySelectorAll('.forecast-min-temp');
 
     let cCurrTemp = currTemp.textContent.split(' °F')[0];
     let cFeelsLike = feelsLike.textContent.split(' °F')[0];
     let cWindSpd = windSpd.textContent.split(' Mph')[0];
     let cMaxTemp = maxTemp.textContent.split(' °F')[0];
     let cMinTemp = minTemp.textContent.split(' °F')[0];
+
+    forecastMaxTemp.forEach(element =>{
+        let newTempF = element.textContent.split(' °F')[0];
+        element.textContent = switchTempC(newTempF) + ' °C';
+    });
+
+    forecastMinTemp.forEach(element => {
+        let newTempF = element.textContent.split(' °F')[0];
+        element.textContent = switchTempC(newTempF) + ' °C';
+    })
 
     currTemp.textContent = switchTempC(cCurrTemp) + ' °C';
     feelsLike.textContent = switchTempC(cFeelsLike) + ' °C';

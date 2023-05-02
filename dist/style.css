@@ -40,6 +40,26 @@
     scale: .7;
 }
 
+.switch-btn {
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+}
+
+.switch-btn button {
+    outline: none;
+    background: none;
+    border: 3px solid black;
+    border-radius: 10px;
+    padding: 7px;
+    width: 70px;
+    box-shadow: 0 0 10px black;
+}
+
+.switch-btn button:hover {
+    scale: 1.1;
+}
+
 .text {
     margin-top: 20px;
     display: flex;
@@ -51,7 +71,7 @@
 
 .main-weather {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     padding: 15px;
 }
 
@@ -59,7 +79,7 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding: 5px;
+    padding: 15px;
 }
 
 .curr-locations {
@@ -72,19 +92,20 @@
 .date-temp {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
 }
 
 .curr-date {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 10px;
 }
 
 .curr-temp {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 10px;
+    padding: 15px;
 }
 
 .curr-temp img {
@@ -94,70 +115,79 @@
 
 .more-info {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     flex-direction: column;
-    padding: 5px;
+    padding: 15px;
+    gap: 15px;
 }
 
 .more-info img {
-    scale: .7;
+    scale: .8;
 }
 
 .feels-like {
     display: flex;
+    justify-content: center;
     align-items: center;
     gap: 5px;
+    padding: 5px;
 }
 
 .wind-speed {
     display: flex;
+    justify-content: center;
     align-items: center;
     gap: 5px;
+    padding: 5px;
 }
 
 .rain-prob {
     display: flex;
+    justify-content: center;
     align-items: center;
     gap: 5px;
+    padding: 5px;
 }
 
 .humidity {
     display: flex;
+    justify-content: center;
     align-items: center;
     gap: 5px;
+    padding: 5px;
 }
 
 .max-temp {
     display: flex;
+    justify-content: center;
     align-items: center;
     gap: 5px;
+    padding: 5px;
 }
 
 .min-temp {
     display: flex;
+    justify-content: center;
     align-items: center;
     gap: 5px;
-}
-
-.wrap-forecast {
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    padding: 10px;
+    padding: 5px;
 }
 
 .cards {
     display: flex;
     justify-content: flex-start;
-    align-items: center;
-    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 15px;
+    margin: 10px;
 }
 
 .card {
     padding: 15px;
-    border-radius: 5px;
+    min-width: 90px;
+    min-height: 200px;
+    border-radius: 10px;
     border: 3px solid black;
     display: flex;
     justify-self: center;
