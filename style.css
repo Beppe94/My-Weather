@@ -1,9 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 *,
 *::before,
 *::after {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+}
+
+body {
+    background-image: url('icons/background.jpg');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #fefefe;
+    font-family: system-ui,'Roboto', sans-serif, 'Segoe UI', 'Open Sans', 'Helvetica Neue';
+}
+
+img {
+    filter: invert(100%);
 }
 
 .search-wrap {
@@ -13,8 +28,8 @@
 }
 
 .search {
-    background-color: white;
-    border: 3px solid black;
+    background-color: #fefefe;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     border-radius: 30px;
@@ -23,11 +38,13 @@
     margin: 0 auto;
     gap: 10px;
     height: 45px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 2);
 }
 
 .search input {
     width: 100%;
     height: 30px;
+    background: none;
     border: none;
     outline: none;
 }
@@ -35,7 +52,7 @@
 .search button {
     border: none;
     background: none;
-    color: white;
+    filter: invert(100%);
     width: 30px;
     scale: .7;
 }
@@ -48,12 +65,11 @@
 
 .switch-btn button {
     outline: none;
-    background: none;
-    border: 3px solid black;
+    background: #fefefe;
     border-radius: 10px;
     padding: 7px;
     width: 70px;
-    box-shadow: 0 0 10px black;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 2);
 }
 
 .switch-btn button:hover {
@@ -79,33 +95,48 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding: 15px;
+    padding: 10px;
 }
 
 .curr-locations {
+    min-width: max-content;
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
-    gap: 10px;
+    padding: 15px;
+    gap: 5px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 2);
+    backdrop-filter: blur(5.7px);
+    -webkit-backdrop-filter: blur(5.7px);
+    border: 1px solid rgba(255, 255, 255, 1);
 }
 
 .date-temp {
+    min-width: max-content;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 2);
+    backdrop-filter: blur(5.7px);
+    -webkit-backdrop-filter: blur(5.7px);
+    border: 1px solid rgba(255, 255, 255, 1);
 }
 
 .curr-date {
     display: flex;
     align-items: center;
     gap: 10px;
+    padding: 10px;
 }
 
 .curr-temp {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    padding: 15px;
+    gap: 5px;
+    padding: 10px;
 }
 
 .curr-temp img {
@@ -114,20 +145,58 @@
 }
 
 .more-info {
+    min-width: max-content;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    padding: 15px;
-    gap: 15px;
+    padding: 10px;
+    gap: 10px;    
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 2);
+    backdrop-filter: blur(5.7px);
+    -webkit-backdrop-filter: blur(5.7px);
+    border: 1px solid rgba(255, 255, 255, 1);
 }
 
 .more-info img {
     scale: .8;
 }
 
+@media (max-width: 460px) {
+    .main-weather {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .curr-locations {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .curr-date {
+        margin: 0 auto;
+    }
+
+    .curr-temp {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .more-info {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+
 .feels-like {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     gap: 5px;
     padding: 5px;
@@ -135,7 +204,7 @@
 
 .wind-speed {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     gap: 5px;
     padding: 5px;
@@ -143,7 +212,7 @@
 
 .rain-prob {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     gap: 5px;
     padding: 5px;
@@ -151,7 +220,7 @@
 
 .humidity {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     gap: 5px;
     padding: 5px;
@@ -159,7 +228,7 @@
 
 .max-temp {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     gap: 5px;
     padding: 5px;
@@ -167,7 +236,7 @@
 
 .min-temp {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     gap: 5px;
     padding: 5px;
@@ -185,12 +254,17 @@
 
 .card {
     padding: 15px;
-    min-width: 90px;
+    min-width: max-content;
     min-height: 200px;
     border-radius: 10px;
-    border: 3px solid black;
     display: flex;
     justify-self: center;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 2);
+    backdrop-filter: blur(5.7px);
+    -webkit-backdrop-filter: blur(5.7px);
+    border: 1px solid rgba(255, 255, 255, 1);
 }
