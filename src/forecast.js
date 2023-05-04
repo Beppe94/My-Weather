@@ -20,6 +20,8 @@ function setForecastDayOne(day,maxTempFore,minTempFore,weatherCodeFore) {
     const maxTemp = document.createElement('h2');
     const minTemp = document.createElement('h3');
     const weatherCodeImg = document.createElement('img');
+
+    dayId.textContent = '';
     
     maxTemp.className = 'forecast-max-temp';
     minTemp.className = 'forecast-min-temp';
@@ -28,7 +30,7 @@ function setForecastDayOne(day,maxTempFore,minTempFore,weatherCodeFore) {
     maxTemp.textContent = maxTempFore[1] + ' °C';
     minTemp.textContent = minTempFore[1] + ' °C';
     weatherCodeImg.src = setWeatherCode(weatherCodeFore[1]);
-
+    
     dayId.appendChild(date);
     dayId.appendChild(maxTemp);
     dayId.appendChild(minTemp);
@@ -41,6 +43,8 @@ function setForecastDayTwo(day,maxTempFore,minTempFore,weatherCodeFore) {
     const maxTemp = document.createElement('h2');
     const minTemp = document.createElement('h3');
     const weatherCodeImg = document.createElement('img');
+
+    dayId.textContent = '';
 
     maxTemp.className = 'forecast-max-temp';
     minTemp.className = 'forecast-min-temp';
@@ -63,6 +67,8 @@ function setForecastDayThree(day,maxTempFore,minTempFore,weatherCodeFore) {
     const minTemp = document.createElement('h3');
     const weatherCodeImg = document.createElement('img');
 
+    dayId.textContent = '';
+
     maxTemp.className = 'forecast-max-temp';
     minTemp.className = 'forecast-min-temp';
     
@@ -83,6 +89,8 @@ function setForecastDayFour(day,maxTempFore,minTempFore,weatherCodeFore) {
     const maxTemp = document.createElement('h2');
     const minTemp = document.createElement('h3');
     const weatherCodeImg = document.createElement('img');
+
+    dayId.textContent = '';
 
     maxTemp.className = 'forecast-max-temp';
     minTemp.className = 'forecast-min-temp';
@@ -105,6 +113,8 @@ function setForecastDayFive(day,maxTempFore,minTempFore,weatherCodeFore) {
     const minTemp = document.createElement('h3');
     const weatherCodeImg = document.createElement('img');
 
+    dayId.textContent = '';
+
     maxTemp.className = 'forecast-max-temp';
     minTemp.className = 'forecast-min-temp';
     
@@ -125,6 +135,8 @@ function setForecastDaySix(day,maxTempFore,minTempFore,weatherCodeFore) {
     const maxTemp = document.createElement('h2');
     const minTemp = document.createElement('h3');
     const weatherCodeImg = document.createElement('img');
+
+    dayId.textContent = '';
 
     maxTemp.className = 'forecast-max-temp';
     minTemp.className = 'forecast-min-temp';
@@ -161,7 +173,7 @@ function setWeatherCode(weatherCode) {
     } else if(snow.includes(weatherCode)) {
         weatherSvg = 'icons/snowy.svg';
     } else if(thunderstorm.includes(weatherCode)) {
-        weatherSvg = 'icons/thunderstorm.svg'
+        weatherSvg = 'icons/thunderstorm.svg';
     }
 
     return weatherSvg;
